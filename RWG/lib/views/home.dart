@@ -1,13 +1,8 @@
+import 'package:RWG/methods/methods.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  final time;
-  HomePage({this.time});
-  timeCounter() {
-    Duration duration = Duration(seconds: time);
-    var remainingtime;
-  }
-
+  final MyData myData = MyData();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +18,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
             Text(
-              time == null ? "10" : time.toString(),
+              "Hello",
               style: TextStyle(color: Colors.grey[45], fontSize: 35),
             ),
           ],

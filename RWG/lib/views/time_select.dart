@@ -1,15 +1,11 @@
+import 'package:RWG/methods/methods.dart';
 import 'package:RWG/views/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-class TimeSelectionPage extends StatefulWidget {
-  @override
-  _TimeSelectionPageState createState() => _TimeSelectionPageState();
-}
-
-class _TimeSelectionPageState extends State<TimeSelectionPage> {
-  int sTime;
+class TimeSelectionPage extends StatelessWidget {
+  final MyData myData = MyData();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,9 +25,8 @@ class _TimeSelectionPageState extends State<TimeSelectionPage> {
               child: CupertinoPicker(
                   itemExtent: 45,
                   onSelectedItemChanged: (value) {
-                    setState(() {
-                      sTime = value;
-                    });
+                    myData.getTime(value);
+                    print(value);
                   },
                   children: [
                     Center(child: Text("10")),
@@ -51,13 +46,7 @@ class _TimeSelectionPageState extends State<TimeSelectionPage> {
                     borderRadius: BorderRadius.circular(20)),
                 child: Text("Next"),
                 onPressed: () {
-                  Get.to(sTime != null
-                      ? HomePage(
-                          time: (sTime + 1) * 10,
-                        )
-                      : HomePage(
-                          time: 10,
-                        ));
+                  Get.to(HomePage());
                 }),
           )
         ],
